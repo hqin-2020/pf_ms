@@ -12,4 +12,4 @@
 # Load Python modules
 module load python/anaconda-2020.02
 
-python Run_Aso1_0_$SLURM_ARRAY_TASK_ID.py  
+python Run_Aso1_0_CPU_$SLURM_ARRAY_TASK_ID.py  

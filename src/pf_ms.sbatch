@@ -16,4 +16,4 @@ module load python/booth/3.8/3.8.5
 scratch_dir="/scratch/${SLURM_JOB_USER}/pf_ms/"
 mkdir -p $scratch_dir
 
-srun python3 Run_Aso1_0_$SLURM_ARRAY_TASK_ID.py  
+srun python3 Run_Aso1_0_CPU_$SLURM_ARRAY_TASK_ID.py  
