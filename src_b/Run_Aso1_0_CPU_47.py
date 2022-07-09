@@ -18,7 +18,7 @@ if __name__ == '__main__':
     datadir = workdir + '/data/'
     outputdir = '/project2/lhansen/particle_filtering/'
 
-    seed = 47
+    seed = 147
 
     obs_series = pd.read_csv(datadir + 'data.csv', delimiter=',')
     obs_series = np.array(obs_series.iloc[:,1:]).T
