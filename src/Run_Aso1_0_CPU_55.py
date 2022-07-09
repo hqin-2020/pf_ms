@@ -16,7 +16,7 @@ if __name__ == '__main__':
     workdir = os.path.dirname(os.getcwd())
     srcdir = os.getcwd()
     datadir = workdir + '/data/'
-    outputdir = workdir + '/output/'
+    outputdir = '/scratch/qhaomin/pf_ms/'
 
     seed = 55
 
