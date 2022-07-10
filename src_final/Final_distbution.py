@@ -98,7 +98,7 @@ def return_coll(θ_final):
 indexes = []
 for i in tqdm(range(len(θ_final))):
     θ_coll.append(return_coll(θ_final[i]))
-    indexes.append('seed = '+success_seed[i])
+    indexes.append('seed = '+str(success_seed[i]))
 
 
 plot_series = []
