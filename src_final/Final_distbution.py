@@ -19,7 +19,7 @@ obs_series = np.array(obs_series.iloc[:,1:]).T
 
 T = obs_series.shape[1]
 N = 100_000
-batch_num = 5
+batch_num = 135
 
 θ_name = ['λ', 'η', \
         'b11', 'b22', \
@@ -100,10 +100,16 @@ for i in tqdm(range(len(θ_final))):
     θ_coll.append(return_coll(θ_final[i]))
     indexes.append('seed = '+str(success_seed[i]))
 
+θ_all = []
+for i in tqdm(range(len(θ_name))):
+    θ_t = []
+    for θs in θ_coll:
+        θ_t = θ_t + θs[i]
+    θ_all.append(θ_t)
 
 plot_series = []
 for i in tqdm(range(len(θ_name))):
-    plot_series.append(pd.DataFrame([θs[i] for θs in θ_coll], index = indexes).T)
+    plot_series.append(pd.DataFrame(θ_all).T)
 
 period = t
 fig, axes = plt.subplots(6,4,figsize = (15,10))
@@ -113,7 +119,24 @@ for v, ax in enumerate(axes.flatten()):
     if v !=0:
         ax.get_legend().remove()
 
-title = 'Actual Data, Distribution of parameters, T = '+ str(period)+', N = '+str(N)+', Different Random seeds'
+title = 'Actual Data, Distribution of parameters, T = '+ str(period)+', N = '+str(N)+', Across Different Random seeds'
 fig.suptitle(title, fontsize=16)    
 fig.tight_layout()
 fig.savefig(docdir + title + '.png',dpi = 400, bbox_inches = "tight")
+
+# plot_series = []
+# for i in tqdm(range(len(θ_name))):
+#     plot_series.append(pd.DataFrame([θs[i] for θs in θ_coll], index = indexes).T)
+
+# period = t
+# fig, axes = plt.subplots(6,4,figsize = (15,10))
+# for v, ax in enumerate(axes.flatten()):
+#     sns.kdeplot(data = plot_series[v], ax = ax)
+#     ax.set_title(θ_name[v])
+#     if v !=0:
+#         ax.get_legend().remove()
+
+# title = 'Actual Data, Distribution of parameters, T = '+ str(period)+', N = '+str(N)+', Different Random seeds'
+# fig.suptitle(title, fontsize=16)    
+# fig.tight_layout()
+# fig.savefig(docdir + title + '.png',dpi = 400, bbox_inches = "tight")
