@@ -1,6 +1,6 @@
 import shutil
 import os
-import tqdm
+from tqdm import tqdm
 
 workdir = os.path.dirname(os.getcwd())
 source_dir = '/scratch/qhaomin/pf_ms/'
