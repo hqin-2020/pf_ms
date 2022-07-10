@@ -19,7 +19,7 @@ obs_series = np.array(obs_series.iloc[:,1:]).T
 
 T = obs_series.shape[1]
 N = 100_000
-batch_num = 10
+batch_num = 5
 
 θ_name = ['λ', 'η', \
         'b11', 'b22', \
@@ -97,7 +97,7 @@ def return_coll(θ_final):
 θ_coll = []
 indexes = []
 for i in tqdm(range(len(θ_final))):
-    θ_coll.append(return_coll(θ_final))
+    θ_coll.append(return_coll(θ_final[i]))
     indexes.append('seed = '+success_seed[i])
 
 
