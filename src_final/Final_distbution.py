@@ -42,10 +42,12 @@ t = 282
 θ_final = []
 success_seed = []
 for i in tqdm(range(1,batch_num)):
-
-    with open(casedir + 'θ_'+str(t)+'.pkl', 'rb') as f:
-        θ_final.append(pickle.load(f))
-    success_seed.append(i)
+    try:
+        with open(casedir[i] + 'θ_'+str(t)+'.pkl', 'rb') as f:
+            θ_final.append(pickle.load(f))
+        success_seed.append(i)
+    except:
+        pass
 
 def return_coll(θ_final):
     λ_particle = []; η_particle = []; b11_particle = []; b22_particle = []
