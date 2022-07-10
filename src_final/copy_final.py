@@ -13,7 +13,4 @@ batch_num = 135
 for i in tqdm(range(batch_num)):
     case = 'actual data, seed = ' + str(i) + ', T = ' + str(T) + ', N = ' + str(N)
     casedir = destination_dir + case  + '/'
-    try:
-        shutil.copy(source_dir + case  + '/θ_282.pkl', casedir)
-    except:
-        pass
+    shutil.copy(source_dir + case  + '/θ_282.pkl', casedir)
