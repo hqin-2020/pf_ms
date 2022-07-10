@@ -1,5 +1,6 @@
 import shutil
 import os
+import tqdm
 
 workdir = os.path.dirname(os.getcwd())
 source_dir = '/scratch/qhaomin/pf_ms/'
@@ -9,11 +10,10 @@ N = 100_000
 T = 282
 batch_num = 135
 
-for i in range(batch_num):
+for i in tqdm(range(batch_num)):
     case = 'actual data, seed = ' + str(i) + ', T = ' + str(T) + ', N = ' + str(N)
     casedir = destination_dir + case  + '/'
-    try: 
-        os.mkdir(casedir)
-        shutil.copy(source_dir + case  + '/θ_282.pkl', casedir)
+    try:
+        shutil.copy(source_dir + case  + 'θ_282.pkl', casedir)
     except:
         pass
